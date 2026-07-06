@@ -24,9 +24,9 @@ export function Library() {
   return (
     <aside className="library">
       <h2 className="lib-title">
-        Knowledge library <span className="lib-count">{docs.length} docs</span>
+        The library <span className="lib-count">{docs.length} practices</span>
       </h2>
-      <p className="lib-sub">Every answer is grounded in these — nothing else. Click one to read it.</p>
+      <p className="lib-sub">Everything the coach shares is drawn from these — nothing invented. Open any one to read it.</p>
       <ul className="lib-list">
         {docs.map((d) => (
           <li key={d.title} className="lib-li">
