@@ -48,7 +48,9 @@ a {
   }
 }
 
-.page { width: 100%; max-width: 720px; margin: 0 auto; padding: 24px 16px; font-family: ui-sans-serif, system-ui, sans-serif; }
+.page { width: 100%; max-width: 1040px; margin: 0 auto; padding: 24px 16px; font-family: ui-sans-serif, system-ui, sans-serif; }
+.layout { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 860px) { .layout { grid-template-columns: 1.4fr 1fr; align-items: start; } }
 .header h1 { font-size: 1.4rem; margin: 0 0 4px; }
 .sub { color: #8a8a8a; font-size: 0.85rem; margin: 0 0 16px; }
 .chat { display: flex; flex-direction: column; gap: 12px; }
@@ -65,3 +67,19 @@ a {
 .composer input { flex: 1; padding: 10px 12px; border: 1px solid #d8d2c6; border-radius: 10px; font-size: 1rem; background: #fff; color: #222; }
 .composer button { padding: 10px 16px; border: none; border-radius: 10px; background: #2f6f6a; color: #fff; cursor: pointer; }
 .composer button:disabled { opacity: 0.5; cursor: default; }
+
+/* Knowledge library panel — solid light card so it stays readable on any page theme */
+.library { background: #f2efe9; color: #222; border: 1px solid #e3ded4; border-radius: 14px; padding: 16px; }
+.lib-title { font-size: 1rem; margin: 0 0 2px; display: flex; align-items: center; gap: 8px; color: #222; }
+.lib-count { font-size: 0.68rem; font-weight: 500; color: #5a5347; background: #e3ded4; border-radius: 999px; padding: 2px 8px; }
+.lib-sub { font-size: 0.8rem; color: #6b6b6b; margin: 0 0 12px; }
+.lib-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.lib-item { width: 100%; display: flex; align-items: center; gap: 8px; text-align: left; background: none; border: none; padding: 7px 6px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; color: #222; }
+.lib-item:hover { background: rgba(47,111,106,0.09); }
+.lib-item-title { flex: 1; }
+.tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.02em; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+.tag-breathwork { background: #d7e9e6; color: #245c56; }
+.tag-meditation { background: #e2e2f0; color: #43438a; }
+.tag-shadow-work { background: #eadfd0; color: #7a5a2e; }
+.tag-framework { background: #dfe7d7; color: #4a6336; }
+.lib-content { font-size: 0.85rem; line-height: 1.5; color: #444; white-space: pre-wrap; padding: 4px 8px 12px; margin: 0; }
