@@ -12,7 +12,7 @@ describe('makeSearch', () => {
 
     const chunks = await search('calm me down', { type: 'meditation', k: 2 })
 
-    expect(create).toHaveBeenCalledWith({ model: 'text-embedding-3-small', input: 'calm me down' })
+    expect(create).toHaveBeenCalledWith({ model: 'gemini-embedding-001', input: 'calm me down', dimensions: 1536 })
     expect(rpc).toHaveBeenCalledWith('match_chunks', {
       query_embedding: [0.5, 0.5],
       match_count: 2,

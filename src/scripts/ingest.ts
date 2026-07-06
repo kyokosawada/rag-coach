@@ -1,14 +1,14 @@
 import '@/lib/env' // must be first — loads .env.local before other modules read process.env
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import OpenAI from 'openai'
+import { createLLMClient } from '@/lib/llm'
 import { parseDoc } from '@/lib/frontmatter'
 import { chunkText } from '@/lib/chunk'
 import { embedText } from '@/lib/embed'
 import { createServerClient } from '@/lib/supabase'
 
 async function main() {
-  const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  const openai = createLLMClient()
   const supabase = createServerClient()
 
   // Fresh load each run.

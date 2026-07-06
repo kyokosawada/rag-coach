@@ -1,4 +1,4 @@
-import OpenAI from 'openai'
+import { createLLMClient } from '@/lib/llm'
 import { createServerClient } from '@/lib/supabase'
 import { makeSearch } from '@/lib/search'
 import { makeToolExecutor, coachTools } from '@/lib/tools'
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       return Response.json({ error: 'messages required' }, { status: 400 })
     }
 
-    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+    const openai = createLLMClient()
     const supabase = createServerClient()
     const search = makeSearch(openai, supabase)
     const executeTool = makeToolExecutor({ search })

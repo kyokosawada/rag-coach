@@ -2,13 +2,15 @@
 
 A retrieval-augmented "AI coach" that answers **only** from an indexed content library, cites its sources, recommends practices, and generates journal prompts. Built to demonstrate RAG, vector search, and a tool-using agent.
 
-**Stack:** Next.js · Supabase Postgres + pgvector · OpenAI · TypeScript.
+**Stack:** Next.js · Supabase Postgres + pgvector · Gemini (via the OpenAI-compatible API) · TypeScript.
 
 > Runs on clearly-labeled sample wellness content, not any real brand's material. Not medical advice.
 
 ## How it works
-1. `content/*.md` is chunked and embedded (`text-embedding-3-small`) into pgvector by `npm run ingest`.
-2. `/api/chat` runs an OpenAI tool-using loop. Tools (`search_library`, `recommend_practice`, `generate_journal_prompt`) retrieve chunks via the `match_chunks` SQL function.
+1. `content/*.md` is chunked and embedded (`gemini-embedding-001`, 1536 dims) into pgvector by `npm run ingest`.
+2. `/api/chat` runs a tool-using loop. Tools (`search_library`, `recommend_practice`, `generate_journal_prompt`) retrieve chunks via the `match_chunks` SQL function.
+
+The LLM is reached through the OpenAI SDK pointed at Gemini's OpenAI-compatible endpoint, so the provider is swappable (change `LLM_BASE_URL` + model names) without touching the rest of the code.
 3. The model answers only from retrieved chunks; the UI shows which docs it used.
 
 ## Run locally

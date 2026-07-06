@@ -9,6 +9,6 @@ describe('embedText', () => {
     const vec = await embedText(fakeOpenAI, 'hello')
 
     expect(vec).toEqual([0.1, 0.2, 0.3])
-    expect(create).toHaveBeenCalledWith({ model: 'text-embedding-3-small', input: 'hello' })
+    expect(create).toHaveBeenCalledWith({ model: 'gemini-embedding-001', input: 'hello', dimensions: 1536 })
   })
 })

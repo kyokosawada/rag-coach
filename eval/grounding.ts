@@ -1,5 +1,5 @@
 import '@/lib/env' // must be first — loads .env.local before other modules read process.env
-import OpenAI from 'openai'
+import { createLLMClient } from '@/lib/llm'
 import { createServerClient } from '@/lib/supabase'
 import { makeSearch } from '@/lib/search'
 import { makeToolExecutor, coachTools } from '@/lib/tools'
@@ -15,7 +15,7 @@ const IN_CORPUS = [
 const OFF_CORPUS = ['What is the capital of France?', 'Write me a SQL query to join two tables.']
 
 async function main() {
-  const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  const openai = createLLMClient()
   const supabase = createServerClient()
   const executeTool = makeToolExecutor({ search: makeSearch(openai, supabase) })
   const run = (q: string) =>
