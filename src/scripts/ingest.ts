@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import '@/lib/env' // must be first — loads .env.local before other modules read process.env
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import OpenAI from 'openai'

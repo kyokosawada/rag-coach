@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import '@/lib/env' // must be first — loads .env.local before other modules read process.env
 import OpenAI from 'openai'
 import { createServerClient } from '@/lib/supabase'
 import { makeSearch } from '@/lib/search'
